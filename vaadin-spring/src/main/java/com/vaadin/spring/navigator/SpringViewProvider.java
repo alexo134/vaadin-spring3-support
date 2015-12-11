@@ -22,6 +22,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 import javax.annotation.PostConstruct;
 
+import com.vaadin.spring.internal.SpringContextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -132,8 +133,7 @@ public class SpringViewProvider implements ViewProvider {
     void init() {
         LOGGER.info("Looking up SpringViews");
         int count = 0;
-        final String[] viewBeanNames = applicationContext
-                .getBeanNamesForAnnotation(SpringView.class);
+        final String[] viewBeanNames = SpringContextUtils.getBeanNamesForAnnotation(applicationContext, SpringView.class);
         for (String beanName : viewBeanNames) {
             final Class<?> type = applicationContext.getType(beanName);
             if (View.class.isAssignableFrom(type)) {

@@ -7,11 +7,11 @@
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-parent</artifactId>
         <version>1.0.0</version>
+        <!--<relativePath>../../.m2/repository/com/vaadin/vaadin-parent/1.0.0/vaadin-parent-1.0.0.pom</relativePath>-->
     </parent>
 
-    <groupId>com.vaadin</groupId>
     <artifactId>vaadin-spring-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-spring3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>vaadin-spring-parent</name>
@@ -33,9 +33,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/vaadin/spring</url>
-        <connection>scm:git:git@github.com:vaadin/spring.git</connection>
-        <developerConnection>scm:git:git@github.com:vaadin/spring.git</developerConnection>
+        <url>https://github.com/alexo134/vaadin-spring3-support</url>
+        <connection>scm:git:git@github.com:alexo134/vaadin-spring3-support.git</connection>
+        <developerConnection>scm:git:git@github.com:alexo134/vaadin-spring3-support.git</developerConnection>
     </scm>
 
     <developers>
@@ -77,6 +77,11 @@
             <organization>Vaadin</organization>
             <email>petter@vaadin.com</email>
         </developer>
+        <developer>
+            <name>Aleksander Grzebyk</name>
+            <organization>ConSol* Consulting &amp; Solutions Software GmbH</organization>
+            <email>grzebyk@gmail.com</email>
+        </developer>
     </developers>
     
     <properties>
@@ -86,7 +91,7 @@
         
         <!-- These are typically overridden with BOMs -->
         <vaadin.version>7.4.4</vaadin.version>
-        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.version>3.1.0.RELEASE</spring.version>
         <spring.boot.version>1.2.2.RELEASE</spring.boot.version>
         
         <slf4j.version>1.7.7</slf4j.version>

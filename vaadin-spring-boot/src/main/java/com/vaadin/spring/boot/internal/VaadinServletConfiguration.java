@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.vaadin.spring.internal.SpringContextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -116,8 +117,7 @@ public class VaadinServletConfiguration implements InitializingBean {
         List<String> uiMappings = new ArrayList<String>();
         logger.info("Checking the application context for Vaadin UI mappings");
         // more checks are performed by the UI provider
-        final String[] uiBeanNames = applicationContext
-                .getBeanNamesForAnnotation(SpringUI.class);
+        final String[] uiBeanNames = SpringContextUtils.getBeanNamesForAnnotation(applicationContext, SpringUI.class);
         for (String uiBeanName : uiBeanNames) {
             SpringUI annotation = applicationContext.findAnnotationOnBean(
                     uiBeanName, SpringUI.class);

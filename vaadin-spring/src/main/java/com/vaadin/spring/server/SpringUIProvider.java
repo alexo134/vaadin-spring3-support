@@ -18,6 +18,7 @@ package com.vaadin.spring.server;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.vaadin.spring.internal.SpringContextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.WebApplicationContext;
@@ -64,8 +65,7 @@ public class SpringUIProvider extends UIProvider {
     @SuppressWarnings("unchecked")
     protected void detectUIs() {
         logger.info("Checking the application context for Vaadin UIs");
-        final String[] uiBeanNames = getWebApplicationContext()
-                .getBeanNamesForAnnotation(SpringUI.class);
+        final String[] uiBeanNames = SpringContextUtils.getBeanNamesForAnnotation(getWebApplicationContext(), SpringUI.class);
         for (String uiBeanName : uiBeanNames) {
             Class<?> beanType = getWebApplicationContext().getType(uiBeanName);
             if (UI.class.isAssignableFrom(beanType)) {
