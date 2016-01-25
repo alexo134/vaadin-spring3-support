@@ -16,6 +16,7 @@
 package com.vaadin.spring;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
@@ -68,6 +69,10 @@ BeanDefinitionRegistryPostProcessor {
 
     @Bean
     SpringViewProvider viewProvider() {
+        if (beanDefinitionRegistry == null) {
+            beanDefinitionRegistry = applicationContext
+                    .getBean(BeanDefinitionRegistryProvider.class).getBeanDefinitionRegistry();
+        }
         return new SpringViewProvider(applicationContext,
                 beanDefinitionRegistry);
     }
